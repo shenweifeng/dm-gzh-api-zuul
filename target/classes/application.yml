@@ -1,0 +1,24 @@
+# dm-gzh-api-zuul-dev
+spring:
+  application:
+    name: dm-gzh-api-zuul
+  zipkin:
+    base-url: http://127.0.0.1:9411
+  sleuth:
+    sampler:
+      percentage: 1.0
+
+server:
+  port: 8769
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+
+zuul:
+  routes:
+    api-user:
+      path: /api/user/**
+      serviceId: dm-gzh-web-user
